@@ -57,7 +57,8 @@
 	
 	var exitJS = function() {
 		//see index.html 
-		parent.redirectMe("http://www.news.com");
+		//parent.
+		redirectMe("http://www.news.com");
 		/*
 		window.location.href = "http://www.news.com";
 		
@@ -68,6 +69,11 @@
 			window.location ="http://www.google.com";
 		}
 		*/
+	}
+	
+	var redirectMe = function(url) {
+		//window.location = url;
+		window.top.location.href = "http://dsf.vtt.fi/GamePortal/";
 	}
 	
 	var printScaleFactor = function () {
