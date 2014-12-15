@@ -974,15 +974,15 @@ void switchLanguage(String lang) {
 
   if (lang == "fi") {
     bg = loadImage("background_fi.png");
-    tutImage[0] = loadImage("htp1_fi.PNG");
-    tutImage[1] = loadImage("htp2_fi.PNG"); 
-    tutImage[2] = loadImage("htp3_fi.PNG"); 
-    tutImage[3] = loadImage("htp4_fi.PNG"); 
-    tutImage[4] = loadImage("htp5_fi.PNG"); 
-    tutImage[5] = loadImage("htp6_fi.PNG"); 
-    tutImage[6] = loadImage("htp7_fi.PNG"); 
-    tutImage[7] = loadImage("htp8_fi.PNG");
-    tutImage[8] = loadImage("htpPractice_fi.PNG");
+    tutImage[0] = loadImage("htp1_fi.png");
+    tutImage[1] = loadImage("htp2_fi.png"); 
+    tutImage[2] = loadImage("htp3_fi.png"); 
+    tutImage[3] = loadImage("htp4_fi.png"); 
+    tutImage[4] = loadImage("htp5_fi.png"); 
+    tutImage[5] = loadImage("htp6_fi.png"); 
+    tutImage[6] = loadImage("htp7_fi.png"); 
+    tutImage[7] = loadImage("htp8_fi.png");
+    tutImage[8] = loadImage("htpPractice_fi.png");
 
     actualRoundMessages[0] = "Hyvä! Aloitetaan sitten varsinainen peli.";
     actualRoundMessages[1] = "Erinomaista! Jatketaan…";
@@ -992,14 +992,14 @@ void switchLanguage(String lang) {
 
   if (lang == "it") {
     bg = loadImage("background_it.png");
-    tutImage[0] = loadImage("htp1_it.PNG");
-    tutImage[1] = loadImage("htp2_it.PNG"); 
-    tutImage[2] = loadImage("htp3_it.PNG"); 
-    tutImage[3] = loadImage("htp4_it.PNG"); 
-    tutImage[4] = loadImage("htp5_it.PNG"); 
-    tutImage[5] = loadImage("htp6_it.PNG"); 
-    tutImage[6] = loadImage("htp7_it.PNG"); 
-    tutImage[7] = loadImage("htp8_it.PNG");
+    tutImage[0] = loadImage("htp1_it.png");
+    tutImage[1] = loadImage("htp2_it.png"); 
+    tutImage[2] = loadImage("htp3_it.png"); 
+    tutImage[3] = loadImage("htp4_it.png"); 
+    tutImage[4] = loadImage("htp5_it.png"); 
+    tutImage[5] = loadImage("htp6_it.png"); 
+    tutImage[6] = loadImage("htp7_it.png"); 
+    tutImage[7] = loadImage("htp8_it.png");
     tutImage[8] = loadImage("htpPractice_it.PNG");
 
     actualRoundMessages[0] = "Molto buona . Ora cominciamo il gioco.";
@@ -1010,15 +1010,15 @@ void switchLanguage(String lang) {
 
   if (lang == "da") {
     bg = loadImage("background_da.png");
-    tutImage[0] = loadImage("htp1_da.PNG");
-    tutImage[1] = loadImage("htp2_da.PNG"); 
-    tutImage[2] = loadImage("htp3_da.PNG"); 
-    tutImage[3] = loadImage("htp4_da.PNG"); 
-    tutImage[4] = loadImage("htp5_da.PNG"); 
-    tutImage[5] = loadImage("htp6_da.PNG"); 
-    tutImage[6] = loadImage("htp7_da.PNG"); 
-    tutImage[7] = loadImage("htp8_da.PNG");
-    tutImage[8] = loadImage("htpPractice_da.PNG");
+    tutImage[0] = loadImage("htp1_da.png");
+    tutImage[1] = loadImage("htp2_da.png"); 
+    tutImage[2] = loadImage("htp3_da.png"); 
+    tutImage[3] = loadImage("htp4_da.png"); 
+    tutImage[4] = loadImage("htp5_da.png"); 
+    tutImage[5] = loadImage("htp6_da.png"); 
+    tutImage[6] = loadImage("htp7_da.png"); 
+    tutImage[7] = loadImage("htp8_da.png");
+    tutImage[8] = loadImage("htpPractice_da.png");
 
     actualRoundMessages[0] = "Meget godt. Lad os nu starte spillet.";
     actualRoundMessages[1] = "Fremragende ! Lad os holde i gang.";
@@ -1028,15 +1028,15 @@ void switchLanguage(String lang) {
 
   if (lang == "nl") {
     bg = loadImage("background_nl.png");
-    tutImage[0] = loadImage("htp1_nl.PNG");
-    tutImage[1] = loadImage("htp2_nl.PNG"); 
-    tutImage[2] = loadImage("htp3_nl.PNG"); 
-    tutImage[3] = loadImage("htp4_nl.PNG"); 
-    tutImage[4] = loadImage("htp5_nl.PNG"); 
-    tutImage[5] = loadImage("htp6_nl.PNG"); 
-    tutImage[6] = loadImage("htp7_nl.PNG"); 
-    tutImage[7] = loadImage("htp8_nl.PNG");
-    tutImage[8] = loadImage("htpPractice_nl.PNG");
+    tutImage[0] = loadImage("htp1_nl.png");
+    tutImage[1] = loadImage("htp2_nl.png"); 
+    tutImage[2] = loadImage("htp3_nl.png"); 
+    tutImage[3] = loadImage("htp4_nl.png"); 
+    tutImage[4] = loadImage("htp5_nl.png"); 
+    tutImage[5] = loadImage("htp6_nl.png"); 
+    tutImage[6] = loadImage("htp7_nl.png"); 
+    tutImage[7] = loadImage("htp8_nl.png");
+    tutImage[8] = loadImage("htpPractice_nl.png");
 
     actualRoundMessages[0] = "Zeer goed . Laten we nu eens beginnen met het spel.";
     actualRoundMessages[1] = "Uitstekend! Laten we blijven gaan.";
