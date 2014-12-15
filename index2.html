@@ -5,7 +5,7 @@
 <title>Hunt and Touch</title>
 <script src="processing.js"></script>
 
-<canvas id="xdsCanvas" data-processing-sources="huntTouch.pde DistractorObj.pde CharObj.pde" >
+<canvas id="xdsCanvas" data-processing-sources="huntTouch/huntTouch.pde huntTouch/DistractorObj.pde huntTouch/CharObj.pde" >
 </canvas>
 
 <!--
@@ -143,7 +143,7 @@
             b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
     }
     return b;
-})(window.location.search.substr(1).split('&'));
+	})(window.location.search.substr(1).split('&'));
 	
 
 	var finalLanguage = "en";
@@ -156,65 +156,6 @@
 		console.log(finalLanguage);
 		console.log(usrId); 
 	});
-
-	var getLanguage = function() {
-		/*
-		var selectedLanguage;
-		var url = "http://dsf.vtt.fi/gameportal/service/selectedlanguage";
-
-		$.ajax({
-            url: url,
-            type: "GET",           
-            datatype: "jsonp",
-			contentType: "application/json; charset=utf-8",
-		
-            success: function (reponse) {
-				selectedLanguage = reponse;
-            },
-            error: function (reponse) {  
-				selectedLanguage = reponse; 
-            }
-        }); 
-				
-	    console.log(selectedLanguage); 
-		return selectedLanguage;*/
-		
-		/*
-		var selectedLanguage;
-        var url = "http://dsf.vtt.fi/gameportal/service/selectedlanguage";
-
-        if (window.XDomainRequest) {
-           var xdr = new XDomainRequest();
-           xdr.open("get", url);
-           xdr.send();
-           xdr.onsuccess = function () {
-             selectedLanguage = xdr.responseText;
-           };
-           xdr.onerror = function () {
-             
-           };
-        } else {
-            $.ajax({
-                url: url,
-                type: "GET",
-				cache: false,
-                datatype: "jsonp",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    selectedLanguage = response;
-					finalLanguage = response; 
-					console.log("success: " + finalLanguage); 
-                },
-                error: function (reponse) {
-					console.log("error"); 
-                }
-            });
-        }
-		
-        return selectedLanguage;
-		*/ 
-		
-	};
 	
 	//var sendToServer = function() {
 	function sendToServer() {
@@ -233,9 +174,11 @@
             }),
 
             success: function (response) {
+				console.log(response); 
             },
 
             error: function (response) {
+				console.log(response);
             }
 
         });
