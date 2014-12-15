@@ -1634,7 +1634,7 @@ void draw() {
           rectMode(CORNER); 
           popMatrix();
 
-          if (language == "en") {
+          if ( language == "en" || language == " " || language == null ) {
             text("Exit", docSizeX*0.5f, 500);
           }
           if (language == "fi") {
