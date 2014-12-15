@@ -93,15 +93,15 @@ void setup() {
   //setupFixedPos(); 
 
   tutImage = new PImage[9];
-  tutImage[0] = loadImage("htp1.PNG");
-  tutImage[1] = loadImage("htp2.PNG"); 
-  tutImage[2] = loadImage("htp3.PNG"); 
-  tutImage[3] = loadImage("htp4.PNG"); 
-  tutImage[4] = loadImage("htp5.PNG"); 
-  tutImage[5] = loadImage("htp6.PNG"); 
-  tutImage[6] = loadImage("htp7.PNG"); 
-  tutImage[7] = loadImage("htp8.PNG");
-  tutImage[8] = loadImage("htpPractice.PNG");  
+  tutImage[0] = loadImage("htp1.png");
+  tutImage[1] = loadImage("htp2.png"); 
+  tutImage[2] = loadImage("htp3.png"); 
+  tutImage[3] = loadImage("htp4.png"); 
+  tutImage[4] = loadImage("htp5.png"); 
+  tutImage[5] = loadImage("htp6.png"); 
+  tutImage[6] = loadImage("htp7.png"); 
+  tutImage[7] = loadImage("htp8.png");
+  tutImage[8] = loadImage("htpPractice.png");  
 
   seq = new String[19];
   seq[0] = "1234"; 
