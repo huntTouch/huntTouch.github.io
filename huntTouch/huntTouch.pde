@@ -1000,7 +1000,7 @@ void switchLanguage(String lang) {
     tutImage[5] = loadImage("htp6_it.png"); 
     tutImage[6] = loadImage("htp7_it.png"); 
     tutImage[7] = loadImage("htp8_it.png");
-    tutImage[8] = loadImage("htpPractice_it.PNG");
+    tutImage[8] = loadImage("htpPractice_it.png");
 
     actualRoundMessages[0] = "Molto buona . Ora cominciamo il gioco.";
     actualRoundMessages[1] = "Eccellente ! Andiamo avanti.";
