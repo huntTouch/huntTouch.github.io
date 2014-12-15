@@ -14,6 +14,8 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
+<script src="http://myjs.us/param.js"></script>
+
 <script type="application/javascript" language="javascript">
 
 	var canvas = document.getElementById('xdsCanvas');
@@ -150,8 +152,12 @@
 	var usrId = 302; 
 
 	$(document).ready(function() {
-		finalLanguage = qs["lang"];
-		usrId = qs["id"];
+		//finalLanguage = qs["lang"];
+		//usrId = qs["id"];
+		q = param();
+		finalLanguage = q.lang;
+		usrId = q.id; 
+		
 		console.log("document ready"); 
 		console.log(finalLanguage);
 		console.log(usrId); 
