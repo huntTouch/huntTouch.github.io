@@ -1237,7 +1237,7 @@ void draw() {
     callGetLanguage = true;
     printLangOnce = false;
   }
-  
+
   language = finalLanguage; //fi, da, nl, it, en
 
   if (!printLangOnce && language != null && language != " ") {
@@ -1640,6 +1640,16 @@ void draw() {
           if (language == "fi") {
             text("Poistu pelistä", docSizeX*0.5f, 500);
           }
+          if (language == "it") {
+            text("Uscita", docSizeX*0.5f, 500);
+          }
+          if (language == "nl") {
+            text("Exit", docSizeX*0.5f, 500);
+          }         
+          if (language == "da") {
+            text("Afslut", docSizeX*0.5f, 500);
+          }
+
           if ( isTouch ) {
             if ( mousePos.dist(exitButton) < 150 ) {
               // go to another page 
