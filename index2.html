@@ -133,34 +133,30 @@
 	
 	//http://way2sky.com/huntTouch/?lang=en&id=3
 	
-	var qs = (function(a) {
-    if (a == "") return {};
-    var b = {};
-    for (var i = 0; i < a.length; ++i)
-    {
-        var p=a[i].split('=', 2);
-        if (p.length == 1)
-            b[p[0]] = "";
-        else
-            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-    }
-    return b;
-	})(window.location.search.substr(1).split('&'));
+	function getParameterByName(name) {
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			results = regex.exec(location.search);
+		return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
 	
-
 	var finalLanguage = "en";
 	var usrId = 302; 
 
 	$(document).ready(function() {
 		//finalLanguage = qs["lang"];
 		//usrId = qs["id"];
-		q = param();
-		finalLanguage = q.lang;
-		usrId = q.id; 
 		
 		console.log("document ready"); 
 		console.log(finalLanguage);
 		console.log(usrId); 
+		
+		finalLanguage = getParameterByName('lang');
+		usrId = getParameterByName('id'); 
+		
+	    console.log(finalLanguage);
+		console.log(usrId); 
+		
 	});
 	
 	//var sendToServer = function() {
