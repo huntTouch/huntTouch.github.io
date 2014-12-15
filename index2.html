@@ -1,0 +1,324 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Hunt and Touch</title>
+<script src="processing.js"></script>
+
+<canvas id="xdsCanvas" data-processing-sources="huntTouch/huntTouch.pde huntTouch/DistractorObj.pde huntTouch/CharObj.pde" >
+</canvas>
+
+<!--
+<div id='testdiv' style='height: 1in; left: -100%; position: absolute; top: -100%; width: 1in;'></div>
+-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="application/javascript" language="javascript">
+
+	var canvas = document.getElementById('xdsCanvas');
+	var pjs = new Processing(canvas);
+	
+	var lastTime = 0.0;
+	var timeDiffBetweenClick = 0.0;
+	var timeElapsed = 0.0;
+	
+	var touchPosX = 0;
+	var touchPosY = 0; 
+	
+	var isTouch = false; 
+	var onMobileDevice = false; 
+	
+	var jsString = "Hunt and Click";
+	
+	var pixelRatio = (window.devicePixelRatio || 1); 
+	
+	// disable for ipad version 
+	var devicePixelRatioX = 1; //(window.screen.width) * pixelRatio / 1920;
+	//var devicePixelRatioY = (window.screen.height) * pixelRatio / 1080;
+	var docBgColor_r = 255; 
+	var docBgColor_g = 255; 
+	var docBgColor_b = 255; 
+	
+	var scaledX = window.screen.width * pixelRatio;
+	var scaledY = window.screen.height * pixelRatio; 
+	
+	//var dpi2 = (window.devicePixelRatio || 1) * 141/96;
+	//var dpi2 = dpi2 * 141/96; 
+	//dpi_x = document.getElementById('testdiv').offsetWidth * dpi2;
+	//dpi_y = document.getElementById('testdiv').offsetHeight * dpi2;
+	
+	//var dpiScale = 1;//dpi_x/141; 
+	
+	var docSizeX = 1000*devicePixelRatioX; //1024, 924
+	var docSizeY = 575*devicePixelRatioX; //768
+	
+	var exitJS = function() {
+		//see index.html 
+		parent.redirectMe("http://www.news.com");
+		/*
+		window.location.href = "http://www.news.com";
+		
+		window.location.href = 'http://www.news.com';
+		window.location.assign("http://www.news.com");
+		window.location = 'http://www.news.com';
+		if (app.Name == "Safari") {
+			window.location ="http://www.google.com";
+		}
+		*/
+	}
+	
+	var printScaleFactor = function () {
+		document.getElementById('scaleFactor').innerHTML = jsString + ": Screen res: " + scaledX + " , " + scaledY + " pixel ratio " + pixelRatio;
+	};
+	var printRawCoord = function (msg) {
+		document.getElementById('msg').innerHTML = msg; 
+	};
+    var printScaledCoord = function (msg) {
+		document.getElementById('msg2').innerHTML = msg; 
+	};
+	
+	var printTime = function(msg) {
+		document.getElementById('timing').innerHTML = msg;
+	};
+	
+	var printElapsed = function( msg2 ) {
+		timeElapsed = msg2; 
+		//document.getElementById('elapsed').innerHTML = timeElapsed; 
+	};
+	
+	// every touch position and when it happened
+	var touchData = {}; 
+	var touchDataInc = 0;
+	var touchDataJson = "["; 
+	var gameLevel = -1; 
+	var correctSel = -1; 
+	var distractSel = -1;
+	var symbolTouched;  
+	var symbolTouchedString;
+	var allclicks = new Array();
+	
+	var saveToJsonTouches = function() {
+		
+		symbolTouchedString = '"'+ symbolTouched + '"'; 
+		
+		var jsonObj = '{"Round": ' + gameLevel + ', "XPosition": ' + touchPosX + ', "YPosition": ' + touchPosY + ', "IsCorrectSelection": ' + correctSel + ', "SelectedLetter": ' + symbolTouchedString + ', "TimeElapsed": ' + timeElapsed + '}';
+		
+		var obj = JSON.parse(jsonObj);
+		//console.log(obj); 
+		
+		allclicks.push(obj);
+		
+		/*
+		touchData[touchDataInc] = { "Round": gameLevel, "XPosition": touchPosX, "YPosition": touchPosY, "IsCorrectSelection": correctSel, "IsDistractor": distractSel, "SelectedLetter": symbolTouched, "TimeElapsed": timeElapsed };*/ 
+		
+		
+		/*
+		if (touchDataInc == 0) {
+		touchDataJson += JSON.stringify( touchData[touchDataInc] ); 
+		} else {
+		touchDataJson += ","+JSON.stringify( touchData[touchDataInc] ); 
+		}
+		touchDataInc++;
+		*/ 
+		
+		//alert(touchDataJson); 
+		//console.log(touchData);
+		console.log(allclicks); 
+		//console.log(touchDataJson); 
+		
+	};
+	
+	//http://way2sky.com/huntTouch/?lang=en&id=3
+	
+	var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+	
+
+	var finalLanguage = "en";
+	var usrId = 302; 
+
+	$(document).ready(function() {
+		finalLanguage = qs["lang"];
+		usrId = qs["id"];
+		console.log("document ready"); 
+		console.log(finalLanguage);
+		console.log(usrId); 
+	});
+
+	var getLanguage = function() {
+		/*
+		var selectedLanguage;
+		var url = "http://dsf.vtt.fi/gameportal/service/selectedlanguage";
+
+		$.ajax({
+            url: url,
+            type: "GET",           
+            datatype: "jsonp",
+			contentType: "application/json; charset=utf-8",
+		
+            success: function (reponse) {
+				selectedLanguage = reponse;
+            },
+            error: function (reponse) {  
+				selectedLanguage = reponse; 
+            }
+        }); 
+				
+	    console.log(selectedLanguage); 
+		return selectedLanguage;*/
+		
+		/*
+		var selectedLanguage;
+        var url = "http://dsf.vtt.fi/gameportal/service/selectedlanguage";
+
+        if (window.XDomainRequest) {
+           var xdr = new XDomainRequest();
+           xdr.open("get", url);
+           xdr.send();
+           xdr.onsuccess = function () {
+             selectedLanguage = xdr.responseText;
+           };
+           xdr.onerror = function () {
+             
+           };
+        } else {
+            $.ajax({
+                url: url,
+                type: "GET",
+				cache: false,
+                datatype: "jsonp",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    selectedLanguage = response;
+					finalLanguage = response; 
+					console.log("success: " + finalLanguage); 
+                },
+                error: function (reponse) {
+					console.log("error"); 
+                }
+            });
+        }
+		
+        return selectedLanguage;
+		*/ 
+		
+	};
+	
+	//var sendToServer = function() {
+	function sendToServer() {
+	
+		var url = 'http://dsf.vtt.fi/gameportal/service/savescavengerhuntdata';
+		
+		$.ajax({
+
+            url: url,
+            contentType: 'application/json',
+            cache: false,
+            type: "POST",
+            data: JSON.stringify({
+                UserId: usrId,
+                Clicks: allclicks
+            }),
+
+            success: function (response) {
+            },
+
+            error: function (response) {
+            }
+
+        });
+		
+	};
+	
+	/*
+	canvas.addEventListener('touchstart', function(event) { 
+		if (event.targetTouches.length == 1) {
+	      isTouch = true; 
+		  onMobileDevice = true; 
+		
+		  var touch = event.targetTouches[0];
+		  
+		  touchPosX = touch.clientX; 
+		  touchPosY = touch.clientY; 
+		  
+		  //printRawCoord("raw mouse coords: " + touchPosX + " " + touchPosY);
+		  //printScaledCoord("scaled mouse coords: " + touch.clientX*(1/devicePixelRatioX) + " " + touch.clientY*(1/devicePixelRatioX));
+		}
+	      // check for first time
+		  if ( lastTime == 0.0 ) {
+			lastTime = pjs.millis();
+		  }
+		  
+		  timeDiffBetweenClick = pjs.millis() - lastTime; 
+		  //printTime( "time between clicks (milliseconds): " + timeDiffBetweenClick ); 
+		  lastTime = pjs.millis();
+		  
+	}, false);
+	
+	canvas.addEventListener('touchend', function(event) { 
+		if (event.targetTouches.length == 1) {
+		  //var touch = event.targetTouches[0];
+		  //isTouch = false; 
+		}
+		  
+	}, false);*/ 
+	
+</script>
+
+
+
+<script>
+	var processingCanvas = document.getElementById("xdsCanvas");
+	var pctx = processingCanvas.getContext('2d');
+</script>
+
+
+
+<style type="text/css">
+		body {
+		  background-color: #FFFFFF; 
+		  color: #FFFFFF; 
+		  border-style: none; 
+		  outline: 0px;
+		  text-decoration: none;
+		  margin: 0px; 
+		}
+		
+	    canvas { 
+			display: block; outline: 0px;
+			margin: 0px 0px 0px 0px; 
+		}
+		<!--
+		#content {
+			margin-top: 20px; 
+			text-align: center; 
+		}-->
+</style>
+		
+</head>
+<body>
+
+		<div id="content">
+		
+		<div id="scaleFactor"></div> 
+		<div id="msg"></div> 
+		<div id="msg2"></div>
+		<div id="timing"></div> 
+		<div id="elapsed"></div> 
+		
+		</div>
+
+</body>
+</html>
