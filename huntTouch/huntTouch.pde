@@ -1002,10 +1002,10 @@ void switchLanguage(String lang) {
     tutImage[7] = loadImage("htp8_it.png");
     tutImage[8] = loadImage("htpPractice_it.png");
 
-    actualRoundMessages[0] = "Molto buona . Ora cominciamo il gioco.";
-    actualRoundMessages[1] = "Eccellente ! Andiamo avanti.";
-    actualRoundMessages[2] = "Bel lavoro ! Proviamo un po ' di più.";
-    actualRoundMessages[3] = "È fantastico ! Solo un altro set.";
+    actualRoundMessages[0] = "Molto buona. Ora cominciamo il gioco.";
+    actualRoundMessages[1] = "Eccellente! Andiamo avanti.";
+    actualRoundMessages[2] = "Bel lavoro! Proviamo un po ' di più.";
+    actualRoundMessages[3] = "È fantastico! Solo un altro set.";
   }
 
   if (lang == "da") {
@@ -1021,9 +1021,9 @@ void switchLanguage(String lang) {
     tutImage[8] = loadImage("htpPractice_da.png");
 
     actualRoundMessages[0] = "Meget godt. Lad os nu starte spillet.";
-    actualRoundMessages[1] = "Fremragende ! Lad os holde i gang.";
-    actualRoundMessages[2] = "Flot arbejde ! Lad os prøve nogle flere.";
-    actualRoundMessages[3] = "Det er godt ! Bare et sæt.";
+    actualRoundMessages[1] = "Fremragende! Lad os holde i gang.";
+    actualRoundMessages[2] = "Flot arbejde! Lad os prøve nogle flere.";
+    actualRoundMessages[3] = "Det er godt! Bare et sæt.";
   }
 
   if (lang == "nl") {
@@ -1038,10 +1038,10 @@ void switchLanguage(String lang) {
     tutImage[7] = loadImage("htp8_nl.png");
     tutImage[8] = loadImage("htpPractice_nl.png");
 
-    actualRoundMessages[0] = "Zeer goed . Laten we nu eens beginnen met het spel.";
+    actualRoundMessages[0] = "Zeer goed. Laten we nu eens beginnen met het spel.";
     actualRoundMessages[1] = "Uitstekend! Laten we blijven gaan.";
     actualRoundMessages[2] = "Nice work! Laten we proberen wat meer.";
-    actualRoundMessages[3] = "Dat is geweldig ! Nog een set.";
+    actualRoundMessages[3] = "Dat is geweldig! Nog een set.";
   }
 
 
